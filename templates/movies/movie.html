@@ -1,0 +1,69 @@
+{% extends 'base.html' %} {% block content %}
+
+
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="{{ movie_details.Hor_Poster_Link }}" alt="First slide">
+        </div>
+    </div>
+</div>
+
+<div class="row" style="padding-top: 2%; padding-left: 5%">
+    <div class="col-4">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{ movie_details.Poster_Link }}" alt="Card image cap">
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div>
+            <h1 style="color: white; font-family: Georgia, 'Times New Roman', Times, serif">{{ movie_details.Title }}</h1>
+            <p style="color: teal">{{ movie_details.Run_Length }} Mins</p>
+            {% for Language in Lang %}
+            <p style="color: teal">{{ Language }}</p>
+            {% endfor %} {% for star in stars %}
+            <p>{{ star |join:" " }}</p>
+            {% endfor %}
+            <p style="color: teal"> {{ movie_details.certificate }} </p>
+            <p style="color: white">{{ movie_details.Description }}</p>
+
+            <iframe width="700" height="315" src="https://www.youtube.com/embed/{{ movie_details.Trailer_Link }}">
+            </iframe>
+        </div>
+    </div>
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Now Showing</h3>
+        </div>
+        <div class="panel-body">
+            {% if show_list %} {% for theatre in show_list %}
+            <div class="media">
+
+                <div class="media-body">
+                    <h4 class="media-heading"><a href="{{ theatre.get_absolute_url }}">{{ theatre.0.theatre.name }} | {{ theatre.0.theatre.address }}</a></h4>
+                    <ul>
+                        {% for showtime in theatre %}
+                        <li>{% if user.is_authenticated %}<a href="#">{{ showtime.time|time:"h:i A" }}</a>{% else %}
+                            <p>{{ showtime.time|time:"h:i A" }}</p>{% endif %}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endfor %} {% else %}
+            <p class="lead">No Shows</p>
+            {% endif %}
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'auth/base.html' %} {% block content %}
+<div class="container">
+    <div class="wrapper">
+        <p align='left' style="padding-left: 35%">
+            <a class="waves-effect waves-light btn" id='btn1' href="{% url 'login' %}">Login</a>
+        </p>
+        <p align='right' style="padding-right: 45%">
+            <a class="waves-effect waves-light btn" id='btn1' href="{% url 'signup' %}">SignUp</a>
+        </p>
+
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'auth/base.html' %} {% block content %}
+
+<div class="container" style="padding-top: 10%">
+    <div class="card">
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="col">
+                        <label for="formGroupExampleInput" id='formsu'>First Name</label>
+                        <input name="first_name" type="text" class="form-control" style="color: white">
+                    </div>
+                    <div class="col">
+                        <label for="formGroupExampleInput" id='formsu'>Last Name</label>
+                        <input name="last_name" type="text" class="form-control" style="color: white">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput" id='formsu'>Username</label> {% if error1 %}
+                    <span style="color: red">*{{ error1 }}</span> {% endif %}
+                    <input name="username" type="text" class="form-control" id="formGroupExampleInput" style="color: white">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1" id='formsu'>Email address</label> {% if error2 %}
+                    <span style="color: red">*{{ error2 }}</span> {% endif %}
+                    <input name="email" , type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="color: white">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1" id='formsu'>Password</label> {% if error3 %}
+                    <span style="color: red">*{{ error3 }}</span> {% endif %}
+                    <input name="password" , type="password" class="form-control" id="exampleInputPassword1" style="color: white">
+                </div>
+                {% if error %}
+                <p style="color: red">*{{ error }}</p>
+                {% endif %}
+                <!-- {{ form }} -->
+                <button type="submit" class="btn btn-primary" , method="POST" id='btn2'>Submit</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}

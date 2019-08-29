@@ -1,0 +1,22 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Moviezz .....</title>
+    <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/my_css.css' %}">
+    <script src="{% static 'js/materialize.js' %}"></script>
+    <script src="{% static 'js/materialize.min.js' %}"></script>
+</head>
+
+<body id="bg" style="background-image: url('{% static 'images/back.jpg' %}')">
+    {% block content %} {% endblock %}
+</body>
+
+</html>

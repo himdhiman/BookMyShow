@@ -1,0 +1,27 @@
+{% extends 'auth/base.html' %} {% block content %}
+
+<div class="container" style="padding-top: 10%">
+    <div class="card">
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="formGroupExampleInput" id='formsu'>Username</label>
+                    <input name="username" type="text" class="form-control" id="formGroupExampleInput" style="color: white">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1" id='formsu'>Password</label>
+                    <input name="password" , type="password" class="form-control" id="exampleInputPassword1" style="color: white">
+                </div>
+                {% if error %}
+                <p style="color: red">*{{ error }}</p>
+                {% endif %}
+                <!-- {{ form }} -->
+                <button type="submit" class="btn btn-primary" , method="POST" id='btn2'>Login</button>
+                <a href="{% url 'signup' %}"> <span style="font-size:75%; color: white"> or Signup?</span></a>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
