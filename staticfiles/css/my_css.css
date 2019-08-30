@@ -1,0 +1,80 @@
+.nav-wrapper {
+    background-color: black;
+}
+
+.wrapper {
+    border-radius: 20px;
+    font-size: 200px;
+    box-sizing: border-box;
+    padding-top: 20%;
+    text-align: center;
+}
+
+#btn1 {
+    background-color: brown;
+    border-radius: 14%;
+    font-size: 35px;
+    position: absolute;
+    top: 50%;
+}
+
+#btn1:hover {
+    background-color: black;
+    opacity: 0.9;
+}
+
+.card {
+    background-color: rgba(41, 24, 24, 0.61);
+    opacity: 1;
+}
+
+#btn2 {
+    background-color: brown;
+    border-radius: 14%;
+}
+
+#btn2:hover {
+    background-color: black;
+    opacity: 0.9;
+}
+
+#formsu {
+    font-style: italic;
+    font-size: 100%;
+    color: brown;
+    font-weight: bold;
+}
+
+#control {
+    padding-top: 2%
+}
+
+.navbar-brand {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.navbar-toggle {
+    z-index: 3;
+}
+
+div#carouselExampleIndicators {
+    height: 70vh;
+    width: 80vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-bottom: 12vh;
+}
+
+ol.carousel-indicators {
+    top: 75vh!important;
+}
+
+.forms {
+    background-color: #f2f2f2;
+    padding: 10px;
+    margin: 5px;
+}

@@ -7,12 +7,22 @@ from django.urls.base import reverse
 
 # Create your views here.
 
+
+
+# This view is Created for handling errors in the form .......
+
 class Dirtyexception(Exception):
     def __init__(self, error_list):
         self.error_list = error_list
 
+
+# This view redirects the user where he can choose weather to Login or Signup the app ......
+
 class LoginSignup(TemplateView):
     template_name = 'auth/login-signup.html'
+
+
+# This is Login Functional View which authenticate the user to the app
 
 def Login(request):
     error = ""
@@ -32,9 +42,15 @@ def Login(request):
     else:
         return render(request, 'auth/login.html')
 
+
+# This is the Logout Functional View which Redirects the user to the HomePage after Logging Out .....
+
 def Logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
+
+
+# This is the SignUp Functional View which helps the user to create an account on this webApp ....
 
 def SignUp(request):
     error = ""
