@@ -72,3 +72,9 @@ div#carouselExampleIndicators {
 ol.carousel-indicators {
     top: 75vh!important;
 }
+
+.forms {
+    background-color: #f2f2f2;
+    padding: 10px;
+    margin: 5px;
+}
