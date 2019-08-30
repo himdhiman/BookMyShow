@@ -47,7 +47,7 @@
                     <ul>
                         {% for showtime in theatre %}
                         <li>{% if user.is_authenticated %}<a href="{% url 'Reserve' showtime.id %}">{{ showtime.time|time:"h:i A" }}</a>{% else %}
-                            <p>{{ showtime.time|time:"h:i A" }}</p>{% endif %}</li>
+                            <p><a href="{% url 'login' %}">{{ showtime.time|time:"h:i A" }}</a></p>{% endif %}</li>
                         {% endfor %}
                     </ul>
                 </div>

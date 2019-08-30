@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block content %}
 
-<h1>Select Seats</h1>
-<h2>{{ show_info }}</h2>
+<h1 style="color: white">Select Seats</h1>
+<h2 style="color: white">{{ show_info }}</h2>
 <div class="seatDiv">
     <div class="seatArray">
     </div>
@@ -9,10 +9,10 @@
         <form method="post" action="{% url 'payment_gateway' %}">
             {% csrf_token %} {{ form.as_p }} Seats: <input name="selected_seat" id="selected_seat" type="text" readonly />
             <br /><br />
-            <span>Total number of seats: </span><span id="no_of_seats">0</span>
-            <input type="hidden" name="show_id" id="show_id" value="{{ show_info.id }}" readonly />
+            <span style="color: white">Total number of seats: </span><span id="no_of_seats">0</span>
+            <input type="hidden" style="color: white" name="show_id" id="show_id" value="{{ show_info.id }}" readonly />
             <br /><br />
-            <button type="submit" class="btn btn-warning">Confirm</button>
+            <button type="submit" class="btn btn-warning" style="color: white">Confirm</button>
         </form>
     </div>
 </div>
