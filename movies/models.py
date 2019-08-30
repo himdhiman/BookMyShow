@@ -1,8 +1,22 @@
 from django.db import models
 from django.urls.base import reverse
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db.models import Q
 
 # Create your models here.
+
+class MovieQuerySet(models.query.QuerySet):
+    def search(self,query):
+        lookup = (
+            Q(Title__icontains=query)
+        )
+        return self.filter(lookup).distinct()
+
+class MovieManager(models.Manager):
+    def get_queryset(self):
+        return MovieQuerySet(self.model,self._db)
+    def search(self,query):
+        return self.get_queryset().search(query)
 
 
 class Movie(models.Model):
@@ -26,6 +40,8 @@ class Movie(models.Model):
     Trailer_link = models.CharField(max_length = 256, null = 'True')
     ReleaseDate = models.DateField(null = True)
     stars = models.ManyToManyField('Star')
+
+    objects = MovieManager()
 
     def get_absolute_url(self):
         return reverse('movie', kwargs = {'movie_id' : self.pk})

@@ -86,9 +86,9 @@ def payment_confirmation(request):
 
         BookedSeat.objects.bulk_create(booked_seat)
 
-        return render(request, 'payment_confirmation.html')
+        return render(request, 'tickets/payment_confirmation.html')
     else:
-        return redirect('theatre.views.theatre_list')
+        return redirect('cinema.views.theatre_list')
 
 
 class BookingListView(ListView):

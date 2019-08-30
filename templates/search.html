@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+    <div class="row">
+        Results for <b> {{ query }}</b>
+        <hr/>
+    </div>
+</div>
+
+
+{% if movie_list %} {% for mov in movie_list %}
+<div class="col-4">
+
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{ mov.Poster_Link }}" alt="Card image cap">
+        <div class="card-body">
+            <a href="{{ mov.get_absolute_url }}">
+                <p class="card-text">{{ mov.Title }}</p>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endfor %} {% else %}
+<p class="lead text-center">No Items Found!!!</p>
+{% endif %} {% endblock %}

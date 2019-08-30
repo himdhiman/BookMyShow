@@ -10,37 +10,77 @@
     <title>BookMyShow | BoxOffice</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/my_css.css' %}">
-    <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="{% static 'js/my_js.js' %}"></script>
-    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
-    <script src="{% static 'js/jquery-ui.js' %}"></script>
+
 
 </head>
 
-<body style="background-color:white">
+<body style="background-color: black">
 
-
-
-
-    <nav class="navbar navbar-expand-lg" style="background-color: black">
-        <a class="navbar-brand" style="font-size: 150%; color: white">BookMyShow</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" style="color: white">BookMyShow</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>{% if request.user.is_authenticated %}
-                <a class="nav-item nav-link navbar-right" style="font-size: 150%; color: white">Hello {{request.user.first_name}}</a>
-                <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a> {% else %}
-                <a class="nav-item nav-link" href="{% url 'login' %}">Login</a> {% endif %}
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link">Hello {{request.user.first_name}}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+                {% endif %}
+            </ul>
+            <div style="margin-right:5px; padding-right: 15% ">
+                <form class="navbar-form navbar-right search-form " role="search " action="{% url 'search' %}">
+                    <div class="input-group ">
+                        <input type="text " name="q " class="form-control " placeholder="Search " style="background-color: black ">
+                        <span class="input-group-btn input-group-sm ">
+                <button type="submit " class="btn btn-default " style="background-color: black; color: white ">Search</button>
+              </span>
+                    </div>
+                </form>
             </div>
         </div>
     </nav>
+
+    <script type="text/javascript ">
+        $(document).ready(function() {
+
+            var searchForm = $('.search-form');
+            console.log(searchForm)
+            var searchInput = searchForm.find("[name='q' ] ");
+            console.log(searchInput)
+            var typingTimer;
+            var typingInterval = 500;
+            searchInput.keyup(function(event) {
+                clearTimeout(typingTimer);
+                console.log(searchInput.val())
+                typingTimer = setTimeout(function() {
+                    console.log("Hello w ")
+                    var query = searchInput.val();
+                    window.location.href = '/search/?q=' + query;
+                }, typingInterval, searchInput);
+            });
+            searchInput.keydown(function(event) {
+                clearTimeout(typingTimer);
+
+            });
+        });
+    </script>
 
 
 

@@ -1,10 +1,33 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, DetailView, ListView, View
 from movies import models
+from movies.models import Movie
 from cinema.models import Show
 import datetime
 
 # Create your views here.
+
+class SearchView(ListView):
+    template_name = 'search.html'
+    
+    def get_context_data(self,*args, **kwargs):
+        context = super(SearchView,self).get_context_data(*args,**kwargs)
+        query = self.request.GET.get('q ')
+        context['query'] = query
+        return context
+    
+    def get_queryset(self,*args,**kwargs):
+        request = self.request
+        print(request.GET)
+        query = request.GET.get('q ')
+        print(query)
+        if query is not None:
+            query = query.strip()
+            print(models.Movie.objects.search(query))
+            return models.Movie.objects.search(query)
+        else:
+            return models.Movie.objects.all()
+
 
 class Index(ListView):
 

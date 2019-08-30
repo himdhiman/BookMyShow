@@ -3,12 +3,16 @@ from django.shortcuts import render
 # Create your views here.
 
 from django.shortcuts import render
+from cinema.models import Movie
 from cinema.models import Theatre, Show
 from django.views.generic import ListView, DetailView
 from django.shortcuts import get_object_or_404,Http404
 import datetime
 
 # Create your views here.
+
+
+
 
 class TheatreListView(ListView):
     def get_queryset(self):

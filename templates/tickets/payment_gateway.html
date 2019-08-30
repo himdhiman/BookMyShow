@@ -4,7 +4,7 @@
 <hr />
 <div class="jumbotron" style="background-color:#add8e6">
     <div class="booking">
-        <form method="post" action="#">
+        <form method="post" action="{% url 'payment_confirmation' %}">
             {% csrf_token %}
             <input type="hidden" id="show_id" name="show_id" value="{{ show.id }}">
             <!--<pre>-->
